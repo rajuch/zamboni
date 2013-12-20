@@ -1,0 +1,48 @@
+### install script
+mkdir playstore
+cd playstore/
+sudo apt-get update
+sudo aptitude install python-dev python-virtualenv libxml2-dev libxslt1-dev libmemcached-dev libssl-dev swig openssl git 
+sudo apt-get install mysql-client-core-5.5 mysql-server libmysqlclient-dev python2.7-mysqldb 
+sudo su -
+mysqladmin -uroot -p create zamboni
+pip install git+git://github.com/ametaireau/M2Crypto.git
+git clone --recursive git://github.com/mozilla/zamboni.git
+cd zamboni
+curl -s https://raw.github.com/brainsik/virtualenv-burrito/master/virtualenv-burrito.sh | $SHELL
+. ~/.venvburrito/startup.sh 
+mkvirtualenv zamboni
+workon zamboni
+pip install --no-deps -r requirements/dev.txt
+cp docs/settings/settings_local.dev.py ./settings_local.py
+vim settings_local.py
+# if there is a problem with m2cryptio
+#cd  requirements
+#vi dev.txt  (remove the m2crypto dependency)
+#cd ..
+#pip install --no-deps -r requirements/dev.txt
+./manage.py install_landfill
+schematic migrations
+./manage.py runserver --settings=settings_local 0.0.0.0:8000
+./manage.py dbshell
+delete from config where `key` ='site_notice';
+
+### source  
+https://gist.github.com/elliottwilliams/6215114/raw/612fde13d14e06ec40227d61df1485d1e802947e/installing-openmrs-zamboni.md
+http://vinyll.scopyleft.fr/amo-and-zamboni-gotchas/
+./docs/topics/install-zamboni/installation.rst
+
+### confirm user  
+http://<machine-name>:8000/en-US/firefox/user/<user.id>/confirm/
+
+### upgrade user to admin
+./manage.py dbshell
+select id from users where email = 'user_email' into @id;
+update auth_user set is_superuser = 1, is_staff = 1 where id = @id; insert into groups_users (group_id, user_id) values (1, @id);
+
+### django templates
+/data/work/ss-git/experiments/playstore/zamboni/templates
+
+### Helpful commands  
+1. leave virtualenv -> deactivate  
+
