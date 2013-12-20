@@ -14,8 +14,8 @@ class App:
 class FIREFOX(App):
     id = 1
     shortername = 'fx'
-    short = 'firefox'
-    pretty = _(u'Firefox')
+    short = 'wavemaker'
+    pretty = _(u'WaveMaker')
     browser = True
     types = [ADDON_EXTENSION, ADDON_THEME, ADDON_DICT, ADDON_SEARCH,
              ADDON_LPAPP, ADDON_PLUGIN, ADDON_PERSONA, ADDON_WEBAPP]
