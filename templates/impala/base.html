@@ -6,7 +6,7 @@
       <meta name="robots" content="noindex">
     {% endif %}
     {% block extrameta %}{% endblock %}
-    <title>{% block title %}{% if settings.APP_PREVIEW %}{{ _('Firefox Marketplace') }}{% else %}{{ _('Mozilla Add-ons') }}{% endif %}{% endblock %}</title>
+    <title>{% block title %}{{ _('Mozilla Add-ons') }}{% endblock %}</title>
 
     <link rel="shortcut icon" type="image/x-icon"
           href="{{ MEDIA_URL}}img/favicon.ico">
@@ -62,7 +62,7 @@
         {% block site_header %}
           {# Well that's an awful tiny mozilla header #}
           <div id="global-header-tab">
-            <a href="//www.mozilla.org/" id="tabzilla">Mozilla</a>
+            <a href="//www.wavemaker.com/" id="tabzilla">WaveMaker</a>
           </div>
           <div class="amo-header">
             <nav id="aux-nav" role="navigation" class="menu-nav c">
@@ -72,15 +72,9 @@
                 {% endif %}
                 {% block aux_nav %}
                   <li>
-                    <a href="#" id="other-apps" title="{{ _('Find add-ons for other applications') }}">{{ _('Other Applications') }}</a>
+                    <a href="#" id="other-apps" title="{{ _('Other Products from WaveMaker') }}">{{ _('Other Products') }}</a>
                     <ul class="other-apps">
-                      {% for app in amo.APP_USAGE %}
-                        {% if app != request.APP and app != amo.MOBILE %}
-                          <li id="app-{{ app.short }}" class="{{ app.short }}">
-                            <a href="{{ locale_url(app.short) }}">{{ app.pretty }}</a>
-                          </li>
-                        {% endif %}
-                      {% endfor %}
+                      <li><a href="//wavemakercloud.com">WaveMaker Cloud</a></li>
                     </ul>
                   </li>
                 {% endblock aux_nav %}
