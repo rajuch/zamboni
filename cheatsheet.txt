@@ -45,4 +45,7 @@ update auth_user set is_superuser = 1, is_staff = 1 where id = @id; insert into 
 
 ### Helpful commands  
 1. leave virtualenv -> deactivate  
+2. pip install translate-toolkit && ./manage.py extract && ./manage.py merge
+3. ./manage.py runserver --settings=settings_local 0.0.0.0:8000
+
 
