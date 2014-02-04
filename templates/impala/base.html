@@ -60,10 +60,6 @@
     <div id="tabzilla-wrapper">
       <div id="page" class="c">
         {% block site_header %}
-          {# Well that's an awful tiny mozilla header #}
-          <div id="global-header-tab">
-            <a href="//www.wavemaker.com/" id="tabzilla">WaveMaker</a>
-          </div>
           <div class="amo-header">
             <nav id="aux-nav" role="navigation" class="menu-nav c">
               <ul>
@@ -72,7 +68,7 @@
                 {% endif %}
                 {% block aux_nav %}
                   <li>
-                    <a href="#" id="other-apps" title="{{ _('Other Products from WaveMaker') }}">{{ _('Other Products') }}</a>
+                    <a href="#" id="other-apps" title="{{ _('Other Products from WaveMaker') }}">{{ _('Other Applications') }}</a>
                     <ul class="other-apps">
                       <li><a href="//wavemakercloud.com">WaveMaker Cloud</a></li>
                     </ul>
@@ -94,19 +90,6 @@
               {{ site_nav() }}
               {% endblock %}
             </div>
-            {% if ADMIN_MESSAGE or settings.READ_ONLY %}
-              <div class="site-balloon" id="site-notice">
-                {% if ADMIN_MESSAGE %}
-                  <p>{{ ADMIN_MESSAGE|safe }}</p>
-                {% endif %}
-                {% if settings.READ_ONLY %}
-                  <p>{% trans %}
-                    Some features are temporarily disabled while we perform
-                    website maintenance. We'll be back to full capacity shortly.
-                    {% endtrans %}</p>
-                {% endif %}
-              </div>
-            {% endif %}
             {% block amo_balloons %}
               {% if WEBAPPS %}
                 <div class="site-tip" id="appruntime-pitch">

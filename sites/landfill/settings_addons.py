@@ -39,6 +39,7 @@ MEDIA_URL = STATIC_URL + 'media/'
 ADDON_ICONS_DEFAULT_URL = MEDIA_URL + 'img/addon-icons'
 ADDON_ICON_BASE_URL = MEDIA_URL + 'img/icons/'
 
+WIDGET_IMAGE_URL = MEDIA_URL + 'img/widgets/'
 
 CACHE_PREFIX = 'landfill.%s' % CACHE_PREFIX
 KEY_PREFIX = CACHE_PREFIX
