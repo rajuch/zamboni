@@ -200,7 +200,7 @@ class InstallButton(object):
             url = file.get_url_path(self.src, self.addon)
 
         if platform == amo.PLATFORM_ALL.id:
-            text, os = _('Download Now'), None
+            text, os = _('Get this Prefab'), None
         else:
             text, os = _('Download'), amo.PLATFORMS[platform]
 
