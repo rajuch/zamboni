@@ -251,6 +251,13 @@ def addon_grid(context, addons, src=None, dl_src=None, pagesize=6, cols=2,
     columns = 'cols-%d' % cols
     return new_context(**locals())
 
+@register.filter
+@jinja2.contextfilter
+@register.inclusion_tag('addons/impala/widget_grid.html')
+def widget_grid(context, widgets, src=None, pagesize=4, cols=2):
+    pages = chunked(widgets, pagesize)
+    columns = 'cols-%d' % cols
+    return new_context(**locals())
 
 @register.filter
 @jinja2.contextfilter

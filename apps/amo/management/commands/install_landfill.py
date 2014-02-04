@@ -30,7 +30,7 @@ class Command(BaseCommand):
                     default=False,
                     help='Remove landfill site notice'),
         make_option('--no-download',
-                    action='store_true',
+                    action='store',
                     dest='no_download',
                     default=False,
                     help='Use already downloaded landfill file.'),
@@ -39,11 +39,19 @@ class Command(BaseCommand):
                     dest='no_save_file',
                     default=False,
                     help='Do not save the file downloaded from allizom.'),
+        make_option('--file-path',
+                    action='store',
+                    dest='file_path',
+                    default=False,
+                    help='path of the database files'),
         )
 
     def handle(self, *args, **kw):
-        filename = date.today().strftime('landfill-%Y-%m-%d.sql.gz')
-        file_location = '/tmp/%s' % filename
+        #filename = date.today().strftime('landfill-%Y-%m-%d.sql.gz')
+        filename = 'landfill.sql.gz'
+        #file_location = '/tmp/%s' % filename
+        file_location = kw['file_path']+'/%s' % filename
+        print file_location
         file_url = 'https://landfill.addons.allizom.org/db_data/%s' % filename
 
         write_dump = 'mysql -u%(db_user)s %(db_name)s' % {

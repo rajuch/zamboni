@@ -915,6 +915,8 @@ class Addon(amo.models.OnChangeMixin, amo.models.ModelBase):
         # Figure out what to return for an image URL
         if self.type == amo.ADDON_PERSONA:
             return self.persona.icon_url
+        if self.type == amo.ADDON_WIDGET:
+            return '%s%s-%s.png' % (settings.WIDGET_IMAGE_URL, self.icon_type, size)
         if not self.icon_type:
             if self.type == amo.ADDON_THEME:
                 icon = amo.ADDON_ICONS[amo.ADDON_THEME]
@@ -1765,6 +1767,7 @@ class Persona(caching.CachingMixin, models.Model):
         return os.path.join(settings.ADDONS_PATH, str(self.addon.id), filename)
 
     def get_mirror_url(self, filename):
+        return settings.MEDIA_URL + '/img/' + self.addon.icon_type + '-' + filename
         host = (settings.PRIVATE_MIRROR_URL if self.addon.is_disabled
                 else settings.LOCAL_MIRROR_URL)
         image_url = posixpath.join(host, str(self.addon.id), filename or '')

@@ -1,0 +1,33 @@
+{% cache pages %}
+<ul class="listing-grid c {{ columns }}">
+{% for page in pages %}
+  {% set first_page = loop.first %}
+  <section>
+  {% for widget in page %}
+    <li>
+      <div class="hovercard collection addon">
+        <a href="{{ widget.get_url_path() }}">
+          <div class="icon">
+            {% if first_page %}
+              <img src="{{ widget.icon_url }}">
+            {% else %}
+              <img data-defer-src="{{ widget.icon_url }}" src="{{ media('img/addon-icons/default-32.png') }}">
+            {% endif %}
+          </div>
+          <div class="summary">
+            <h3>{{ widget.name }}</h3>
+	    {% if widget.description %}
+              <p class="desc">{{ widget.description|striptags }}</p>
+	    {% else %}
+	      <p class="desc">{{ widget.summary|striptags }}</p>
+	    {% endif %}
+          </div>
+        </a>
+      </div>
+    </li>
+  {% endfor %}
+  </section>
+{% endfor %}
+</ul>
+{% endcache %}
+

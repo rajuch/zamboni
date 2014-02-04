@@ -4,6 +4,7 @@ import json
 import random
 import uuid
 from operator import attrgetter
+import sys
 
 from django import http
 from django.conf import settings
@@ -339,7 +340,6 @@ def home(request):
     base = Addon.objects.listed(request.APP).filter(type=amo.ADDON_EXTENSION)
     # This is lame for performance. Kill it with ES.
     frozen = list(FrozenAddon.objects.values_list('addon', flat=True))
-
     # Collections.
     collections = Collection.objects.filter(listed=True,
                                             application=request.APP.id,
@@ -347,13 +347,15 @@ def home(request):
     featured = Addon.objects.featured(request.APP, request.LANG,
                                       amo.ADDON_EXTENSION)[:18]
     popular = base.exclude(id__in=frozen).order_by('-average_daily_users')[:10]
+   
     hotness = base.exclude(id__in=frozen).order_by('-hotness')[:18]
     personas = Addon.objects.featured(request.APP, request.LANG,
                                       amo.ADDON_PERSONA)[:18]
+    widgets = Addon.objects.featured(request.APP, request.LANG, amo.ADDON_WIDGET)
     return jingo.render(request, 'addons/home.html',
                         {'popular': popular, 'featured': featured,
                          'hotness': hotness, 'personas': personas,
-                         'src': 'homepage', 'collections': collections})
+                         'src': 'homepage', 'widgets': widgets})
 
 
 @mobilized(home)

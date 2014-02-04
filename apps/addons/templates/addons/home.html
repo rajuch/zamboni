@@ -7,11 +7,11 @@
 {% set ext, extrss = url('browse.extensions'), url('browse.extensions.rss') %}
 {% set view_all = {
   'featured': {
-    'text': _('Featured Extensions'),
+    'text': _('Featured Prefabs'),
     'feed': url('browse.featured.rss'),
   },
   'popular': {
-    'text': _('Popular Extensions'),
+    'text': _('Popular Prefabs'),
     'feed': extrss|urlparams(sort='users'),
   }
 }
@@ -48,7 +48,7 @@
     <section class="primary">
       {% if featured %}
         <div id="featured-extensions" class="island">
-          <h2>{{ _('Featured Extensions') }}
+          <h2>{{ _('Featured Prefabs') }}
             <a class="seeall" href="{{ url('browse.extensions')|urlparams(sort='featured') }}">{{ _('See all »') }}</a>
           </h2>
           {{ featured|addon_grid(src='hp-hc-featured',
@@ -57,7 +57,7 @@
       {% endif %}
       {% if hotness %}
         <div id="upandcoming" class="island">
-          <h2>{{ _('Up &amp; Coming Extensions') }}
+          <h2>{{ _('Upcoming Prefabs') }}
             <a class="seeall" href="{{ url('browse.extensions')|urlparams(sort='hotness') }}">{{ _('See all »') }}</a>
           </h2>
           {{ hotness|addon_grid(src='hp-hc-upandcoming',
@@ -72,12 +72,12 @@
           {{ personas|impala_persona_grid }}
         </div>
       {% endif %}
-      {% if collections %}
-        <div id="featured-collections" class="island">
-          <h2>{{ _('Featured Collections') }}
+      {% if widgets %}
+        <div id="featured-widgets" class="island">
+          <h2>{{ _('Featured Widgets') }}
             <a class="seeall" href="{{ url('collections.list')|urlparams(sort='featured') }}">{{ _('See all »') }}</a>
           </h2>
-          {{ collections|collection_grid }}
+          {{ widgets|widget_grid }}
         </div>
       {% endif %}
     </section>

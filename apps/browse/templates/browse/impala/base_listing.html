@@ -8,14 +8,14 @@
   {% set title = category.name %}
 {% else %}
   {% if section == 'extensions' %}
-    {% set title = {'featured': _('Featured Extensions'),
-                    'users': _('Most Popular Extensions'),
-                    'rating': _('Top-Rated Extensions'),
-                    'created': _('Newest Extensions'),
-                    'name': _('Extensions by Name'),
-                    'popular': _('Extensions by Weekly Downloads'),
-                    'updated': _('Recently Updated Extensions'),
-                    'hotness': _('Up & Coming Extensions')}.get(sorting) %}
+    {% set title = {'featured': _('Featured Prefabs'),
+                    'users': _('Most Popular Prefabs'),
+                    'rating': _('Top-Rated Prefabs'),
+                    'created': _('Newest Prefabs'),
+                    'name': _('Prefabs by Name'),
+                    'popular': _('Prefabs by Weekly Downloads'),
+                    'updated': _('Recently Updated Prefabs'),
+                    'hotness': _('Up & Coming Prefabs')}.get(sorting) %}
   {% elif section == 'themes' %}
     {# L10n: "Complete" is used as an adjective. "Complete Theme" means a full-featured theme. #}
     {% set title = {'featured': _('Featured Complete Themes'),

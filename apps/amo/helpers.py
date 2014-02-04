@@ -544,9 +544,12 @@ def _site_nav(context):
         weight__gte=0, type=amo.ADDON_EXTENSION)
     personas = Category.objects.filter(weight__gte=0, type=amo.ADDON_PERSONA)
 
+    widgets = Category.objects.filter(application=request.APP.id,
+        weight__gte=0, type=amo.ADDON_WIDGET)
     ctx = dict(request=request, amo=amo,
                extensions=sorted_cats(extensions),
-               personas=sorted_cats(personas))
+               personas=sorted_cats(personas),
+               widgets=sorted_cats(widgets))
     return jinja2.Markup(env.get_template('amo/site_nav.html').render(ctx))
 
 

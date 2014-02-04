@@ -21,10 +21,10 @@ collection_sort_by = (
 PER_PAGE = 20
 
 SEARCH_CHOICES = (
-    ('all', _lazy(u'search for add-ons')),
-    ('collections', _lazy(u'search for collections')),
-    ('themes', _lazy(u'search for themes')),
-    ('apps', _lazy(u'search for apps'))
+    ('all', _lazy(u'search....')),
+    ('collections', _lazy(u'search....')),
+    ('themes', _lazy(u'search....')),
+    ('apps', _lazy(u'search....'))
 )
 
 
