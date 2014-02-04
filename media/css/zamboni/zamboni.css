@@ -39,7 +39,8 @@ li.usertag {
 }
 
 #tabzilla-wrapper {
-    background: #fff url(../../img/zamboni/global/bg-header.png) repeat-x;
+    background: url("../../img/zamboni/global/Background_Gradient.png") repeat-x scroll 0 0 #FFFFFF;
+    border-top: 2px solid #FFFFFF;
 }
 
 header {

@@ -499,7 +499,6 @@ MINIFY_BUNDLES = {
             'css/legacy/jquery-lightbox.css',
             'css/legacy/autocomplete.css',
             'css/zamboni/zamboni.css',
-            'css/global/headerfooter.css',
             'css/zamboni/tags.css',
             'css/zamboni/tabs.css',
             'css/impala/formset.less',
@@ -516,7 +515,6 @@ MINIFY_BUNDLES = {
             'css/legacy/jquery-lightbox.css',
             'css/impala/site.less',
             'css/impala/typography.less',
-            'css/global/headerfooter.css',
             'css/impala/forms.less',
             'css/common/invisible-upload.less',
             'css/impala/header.less',
@@ -952,6 +950,8 @@ PREVIEW_FULL_PATH = PREVIEWS_PATH + '/full/%s/%d.%s'
 STATIC_URL = SITE_URL + '/'
 ADDON_ICONS_DEFAULT_URL = MEDIA_URL + '/img/addon-icons'
 ADDON_ICON_BASE_URL = MEDIA_URL + 'img/icons/'
+WIDGET_IMAGE_URL = MEDIA_URL + 'img/widgets/'
+
 ADDON_ICON_URL = (STATIC_URL +
                   'img/uploads/addon_icons/%s/%s-%s.png?modified=%s')
 PREVIEW_THUMBNAIL_URL = (STATIC_URL +
