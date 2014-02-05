@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page_title(addon.name) }}{% endblock %}
+{% block title %}{{ addon.name }}{% endblock %}
 {% block js %}{% include("amo/recaptcha_js.html") %}{% endblock %}
 {% block bodyclass %}inverse{% endblock %}
 
