@@ -1226,7 +1226,8 @@ ul.license li.copyr { background-position: 0 -260px; }
     height: 67px;
 }
 .persona-large .persona-preview [data-browsertheme] {
-    height: 100px;
+    height: 400px;
+    width: 650px;
 }
 #persona-summary .unreviewed {
     background: none;
