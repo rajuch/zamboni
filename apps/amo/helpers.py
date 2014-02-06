@@ -245,10 +245,7 @@ def currencyfmt(num, currency):
 
 def page_name(app=None):
     """Determine the correct page name for the given app (or no app)."""
-    if app:
-        return _(u'Add-ons for {0}').format(app.pretty)
-    else:
-        return _('Add-ons')
+    return _('Add-ons')
 
 
 @register.function
@@ -290,7 +287,6 @@ def breadcrumbs(context, items=list(), add_default=True, crumb_size=40):
         crumbs = [(urlresolvers.reverse('home'), page_name(app))]
     else:
         crumbs = []
-
     # add user-defined breadcrumbs
     if items:
         try:
