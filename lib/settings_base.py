@@ -695,7 +695,6 @@ MINIFY_BUNDLES = {
         'preload': (
             'js/lib/jquery-1.6.4.js',
             'js/impala/preloaded.js',
-            'js/zamboni/analytics.js',
         ),
         # Impala: Things to be loaded at the bottom
         'impala': (
@@ -1222,8 +1221,6 @@ CSP_IMG_SRC = ("'self'", SITE_URL,
                "https://mozorg.cdn.mozilla.net",  # Tabzilla.
                "http://mozorg.cdn.mozilla.net",
                "https://www.getpersonas.com",
-               "https://ssl.google-analytics.com",
-               "http://www.google-analytics.com",
                "data:"
               )
 CSP_SCRIPT_SRC = ("'self'", SITE_URL,
@@ -1233,8 +1230,6 @@ CSP_SCRIPT_SRC = ("'self'", SITE_URL,
                   "https://login.persona.org",
                   "https://firefoxos.persona.org",
                   "https://www.paypalobjects.com",
-                  "https://ssl.google-analytics.com",
-                  "http://www.google-analytics.com",
                   )
 CSP_STYLE_SRC = ("'self'", SITE_URL,
                  "https://mozorg.cdn.mozilla.net",  # Tabzilla.
@@ -1245,7 +1240,6 @@ CSP_STYLE_SRC = ("'self'", SITE_URL,
 CSP_OBJECT_SRC = ("'none'",)
 CSP_MEDIA_SRC = ("'none'",)
 CSP_FRAME_SRC = ("https://s3.amazonaws.com",
-                 "https://ssl.google-analytics.com",
                  "https://login.persona.org",
                  "https://firefoxos.persona.org",
                  "https://www.youtube.com",
