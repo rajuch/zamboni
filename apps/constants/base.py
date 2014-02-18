@@ -179,6 +179,7 @@ ADDON_TYPE = {
     ADDON_LPAPP: _(u'Language Pack (Application)'),
     ADDON_PERSONA: _(u'Theme'),
     ADDON_WEBAPP: _(u'App'),
+    ADDON_WIDGET: _(u'Widget'),
 }
 
 # Plural
@@ -192,6 +193,7 @@ ADDON_TYPES = {
     ADDON_LPAPP: _(u'Language Packs (Application)'),
     ADDON_PERSONA: _(u'Themes'),
     ADDON_WEBAPP: _(u'Apps'),
+    ADDON_WIDGET: _(u'Widgets'),
 }
 
 # Searchable Add-on Types
@@ -203,6 +205,7 @@ ADDON_SEARCH_TYPES = [
     ADDON_SEARCH,
     ADDON_LPAPP,
     ADDON_PERSONA,
+    ADDON_WIDGET,
 ]
 
 ADDON_ADMIN_SEARCH_TYPES = ADDON_SEARCH_TYPES + [ADDON_PLUGIN]
@@ -236,6 +239,7 @@ ADDON_SLUGS = {
     ADDON_PERSONA: 'personas',
     ADDON_SEARCH: 'search-tools',
     ADDON_WEBAPP: 'apps',
+    ADDON_WIDGET: 'widgets',
 }
 
 # These are used in the update API.
@@ -249,6 +253,7 @@ ADDON_SLUGS_UPDATE = {
     ADDON_PERSONA: 'background-theme',
     ADDON_PLUGIN: 'plugin',
     ADDON_WEBAPP: 'app',
+    ADDON_WIDGET: 'widget',
 }
 
 # A slug to ID map for the search API. Included are all ADDON_TYPES that are
@@ -261,6 +266,7 @@ ADDON_SEARCH_SLUGS = {
     'search': ADDON_SEARCH,
     'language': ADDON_LPAPP,
     'persona': ADDON_PERSONA,
+    'widget': ADDON_WIDGET,
 }
 
 # Marketplace search API addon types.

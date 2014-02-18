@@ -36,6 +36,16 @@
                     'name': _('Apps by Name'),
                     'updated': _('Recently Updated Apps'),
                     'hotness': _('Up & Coming Apps')}.get(sorting) %}
+  {% elif section == 'widgets' %}
+    {% set title = {'featured': _('Featured Widgets'),
+                    'downloads': _('Widgets by Weekly Downloads'),
+                    'free': loc('Top Free Widgets'),
+                    'paid': loc('Top Paid Widgets'),
+                    'rating': _('Top-Rated Widgets'),
+                    'created': _('Newest Widgets'),
+                    'name': _('Widgets by Name'),
+                    'updated': _('Recently Updated Widgets'),
+                    'hotness': _('Up & Coming Widgets')}.get(sorting) %}
   {% endif %}
 {% endif %}
 
@@ -46,6 +56,7 @@
 {% set base_crumb = {
     'extensions': (url('browse.extensions'), _('Extensions')),
     'themes': (url('browse.themes'), _('Themes')),
+    'widgets': (url('browse.widgets'), _('Widgets'))
 }.get(section, 'extensions') %}
 
 {% if section in ('extensions', 'themes') %}

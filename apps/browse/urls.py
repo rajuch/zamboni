@@ -56,6 +56,8 @@ urlpatterns = patterns('',
 
     url('^extensions/(?:(?P<category>[^/]+)/)?$', views.extensions,
         name='browse.extensions'),
+    url('^widgets/(?:(?P<category>[^/]+)/)?$', views.widgets,
+        name='browse.widgets'),
     url('^es/extensions/(?:(?P<category>[^/]+)/)?$', views.es_extensions,
         name='browse.es.extensions'),
 

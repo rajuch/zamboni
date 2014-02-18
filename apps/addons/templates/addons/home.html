@@ -75,7 +75,7 @@
       {% if widgets %}
         <div id="featured-widgets" class="island">
           <h2>{{ _('Featured Widgets') }}
-            <a class="seeall" href="{{ url('collections.list')|urlparams(sort='featured') }}">{{ _('See all »') }}</a>
+            <a class="seeall" href="{{ url('browse.widgets')|urlparams(sort='featured') }}">{{ _('See all »') }}</a>
           </h2>
           {{ widgets|widget_grid }}
         </div>

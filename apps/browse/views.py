@@ -193,6 +193,35 @@ def extensions(request, category=None, template=None):
                          'sort_opts': filter.opts, 'src': src,
                          'dl_src': dl_src, 'search_cat': '%s,0' % TYPE})
 
+@mobile_template('browse/{mobile/}extensions.html')
+def widgets(request, category=None, template=None):
+    #TODO: change the method after the specific requirements
+    TYPE = amo.ADDON_WIDGET
+
+    if category is not None:
+        q = Category.objects.filter(application=request.APP.id, type=TYPE)
+        category = get_object_or_404(q, slug=category)
+
+    sort = request.GET.get('sort')
+    if not sort and not request.MOBILE and category and category.count > 4:
+        return category_landing(request, category)
+
+    addons, filter = addon_listing(request, [TYPE])
+    sorting = filter.field
+    src = 'cb-btn-%s' % sorting
+    dl_src = 'cb-dl-%s' % sorting
+
+    if category:
+        addons = addons.filter(categories__id=category.id)
+
+    addons = amo.utils.paginate(request, addons, count=addons.count())
+    return jingo.render(request, template,
+                        {'section': 'widgets', 'addon_type': TYPE,
+                         'category': category, 'addons': addons,
+                         'filter': filter, 'sorting': sorting,
+                         'sort_opts': filter.opts, 'src': src,
+                         'dl_src': dl_src, 'search_cat': '%s,0' % TYPE})
+
 
 @mobile_template('browse/{mobile/}extensions.html')
 def es_extensions(request, category=None, template=None):
@@ -338,9 +367,8 @@ def personas_listing(request, category_slug=None):
                 if 'sort' in request.GET:
                     url = amo.utils.urlparams(url, sort=request.GET['sort'])
                 return redirect(url, permanent=not settings.DEBUG)
-
+        print cat.id
         base = base.filter(categories__id=cat.id)
-
     filter = PersonasFilter(request, base, key='sort', default='up-and-coming')
     return categories, filter, base, cat
 
@@ -373,7 +401,6 @@ def personas(request, category=None, template=None):
     else:
         ids = Addon.featured_random(request.APP, request.LANG)
         featured = manual_order(base, ids, pk_name="addons.id")
-
     ctx = {'categories': categories, 'category': category, 'addons': addons,
            'filter': filter, 'sorting': filter.field, 'sort_opts': filter.opts,
            'featured': featured, 'search_cat': 'themes',
