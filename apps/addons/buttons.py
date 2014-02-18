@@ -252,7 +252,7 @@ class PersonaInstallButton(InstallButton):
     install_class = ['persona']
 
     def links(self):
-        return [Link(_(u'Add to {0}').format(unicode(self.app.pretty)),
+        return [Link(_(u'Try this theme in Sandbox').format(unicode(self.app.pretty)),
                      reverse('addons.detail', args=[amo.PERSONAS_ADDON_ID]))]
 
     def attrs(self):
